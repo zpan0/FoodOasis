@@ -1,0 +1,80 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Oasis</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- MapBox stuff -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+
+     <!-- MapBox stuff2 -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
+    <style>
+        body { margin: 0; padding: 0; }
+        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar_container">
+            <a href="index.html" id="navbar_logo">
+                <img src="images/LogoByLUCY.png">
+                <img src="images/LabelByLUCY.png">
+
+            </a>
+            <div class="navbar_toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar_menu">
+                <li class="navbar_item">
+                    <a href="index.html" class="navbar_links">Home</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="findOasis.html" class="navbar_links">Find Oasis</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="newOasis.html" class="navbar_links">New Oasis</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="aboutUs.html" class="navbar_links">About Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Maps -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+
+    <style>
+        .geocoder {
+            position: absolute;
+            z-index: 1;
+            width: 50%;
+            left: 50%;
+            margin-left: -25%;
+            top: 80px;
+            margin-top: 20px;
+        }
+        .mapboxgl-ctrl-geocoder {
+            min-width: 100%;
+        }
+    </style>
+
+    <div class="mapContainer">
+        <div id="map"></div>
+        <div id="geocoder" class="geocoder"></div>
+    </div>
+
+    <!-- GoToTop Button -->
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+    <script src="app.js"></script>
+</body>
+</html>

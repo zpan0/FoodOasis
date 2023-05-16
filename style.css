@@ -1,0 +1,671 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Avenir;
+}
+body{
+    background-color: #f6f6e9ff;
+}
+/* Navigation Bar */
+.navbar{
+    background:#f6f6e9ff;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+.navbar_container{
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 50px;
+    border-bottom: 1px solid black;
+    
+}
+#navbar_logo img{
+    height: 70px;
+}
+#navbar_logo{
+    color: #11b706;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 0 1rem;
+    height: 100%;
+}
+.navbar_menu{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    text-align: center;
+}
+.navbar_item{
+    height: 80px;
+}
+.navbar_links{
+    font-size: 24.3px;
+    font-weight: 500;
+    color: #11b706;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 0 1rem;
+    height: 100%;
+}
+.navbar_links:hover{
+    color: #ff9a17;
+    transition: all 0.3s ease;
+}
+@media screen and (max-width: 960px){
+    .navbar_container{
+        display: flex;
+        justify-content: space-between;
+        height: 80px;
+        z-index: 1;
+        width: 100%;
+        max-width: 1300px;
+        padding: 0;
+    }
+    .navbar_menu{
+        display: grid;
+        grid-template-columns: auto;
+        margin: 0;
+        width: 100%;
+        position: absolute;
+        top: -1000px;
+        opacity: 0;
+        transition: all 0.5s ease;
+        height: 50vh;
+        z-index: -1;
+    }
+    .navbar_menu.active{
+        background: #f6f6e9ff;
+        top: 100%;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 99;
+        height: 50vh;
+        font-size: 1.6rem;
+    }
+    #navbar_logo{
+        padding-left: 25px;
+    }
+    .navbar_toggle .bar{
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        transition: all 0.3s ease-in-out;
+        background: #11b706;
+    }
+    .navbar_item{
+        width: 100%;
+    }
+    .navbar_links{
+        text-align: center;
+        width: 100%;
+        display: table;
+    }
+    #mobile-menu{
+        position: absolute;
+        top: 20%;
+        right: 5%;
+        transform: translate(5%, 20%);
+    }
+    .navbar_toggle .bar{
+        display: block;
+        cursor: pointer;
+    }
+    #mobile-menu.is-active .bar:nth-child(2){
+        opacity: 0;
+    }
+    #mobile-menu.is-active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+    #mobile-menu.is-active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+/* Start */
+.main{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background-color: #f6f6e9ff;
+}
+.main_container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-self: center;
+    margin: 0 auto;
+    height: 90vh;
+    background-color: #f6f6e9ff;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    padding: 0 50px;
+}
+.main_content h1{
+    font-size: 4rem;
+    background-color: #77dd70;
+    background-image: linear-gradient(to top, #11b706, #5ce053);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
+.main_content h2{
+    font-size: 3rem;
+    background-color: #f9b55c;
+    background-image: linear-gradient(to top, #ff9a17, #fab55a);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
+.main_content p{
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #383737;
+}
+a.findOasis_btn{
+    display:inline-block;
+    padding: 14px 32px;
+    margin-top: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 10px;
+    border-radius:2em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-weight:300;
+    color:#FFFFFF;
+    background-image: linear-gradient(to top, #fab55a, #ff9a17);
+    text-align:center;
+    transition: all 1s ease;
+}
+a.findOasis_btn:hover{
+    background-image: linear-gradient(to top, rgb(86, 84, 84) ,black);
+}
+@media all and (max-width:30em){
+    a.findOasis_btn{
+        display:block;
+        margin:0.4em auto;
+    }
+}
+a.newOasis_btn{
+    display:inline-block;
+    padding: 14px 32px;
+    margin-top: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 10px;
+    border-radius:2em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-weight:300;
+    color:#FFFFFF;
+    background-image: linear-gradient(to top, #5ce053, #11b706);
+    text-align:center;
+    transition: all 1s ease;
+}
+a.newOasis_btn:hover{
+    background-image: linear-gradient(to top, rgb(86, 84, 84) ,black);
+}
+@media all and (max-width:30em){
+    a.newOasis_btn{
+        display:block;
+        margin:0.4em auto;
+    }
+}
+.main_img-container{
+    text-align: center;
+}
+#main_img{
+    height: 70%;
+    width: 70%;
+}
+@media screen and (max-width: 960px){
+    .main_container{
+        display: grid;
+        grid-template-columns: auto;
+        align-items: center;
+        justify-self: center;
+        width: 100%;
+        margin: 0 auto;
+        height: fit-content;
+    }
+    .main_content{
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .main_content h1{
+        font-size: 3rem;
+        margin-top: 2rem;
+    }
+    .main_content h2{
+        font-size: 2rem;
+    }
+    .main_content p{
+        margin-top: 1rem;
+        font-size: 1.25rem;
+    }
+}
+@media screen and (max-width: 500px){
+    .main_content h1{
+        font-size: 2rem;
+        margin-top: 2rem;
+    }
+    .main_content h2{
+        font-size: 1.5rem;
+    }
+    .main_content p{
+        margin-top: 1rem;
+        font-size: 1rem;
+    }
+    .findOasis_btn{
+        padding: 10px 28px;
+        margin: 2.5rem 1rem;
+    }
+    .newOasis_btn{
+        padding: 10px 28px;
+        margin: 0rem 1rem;
+    }
+}
+#vege_pic {
+    padding-top: 10px;
+    display:block;
+    border-radius: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35%;
+}
+/* About Us */
+.AU {
+    background-color: #f6f6e9ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90vh;
+}
+.AU_container{
+    background-color: #f6f6e9ff;
+    justify-content: center;
+    padding: 0 50px;
+}
+.AU_content{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+.grid {
+    display: grid;
+    grid-gap: 1em;
+    grid-auto-flow: row;
+    grid-column: 2;
+}
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box:nth-child(4) {
+    grid-column: 2;
+}
+.box table {
+    border: 1px solid #1d6418;
+    width: 90%;
+    height: 80%;
+}
+.box td {
+    text-align: center;
+    padding: 15px;
+}
+#child_eating {
+    border-radius: 15%;
+    height:85%;
+    width: 85%;
+}
+.AU h1{
+    display: block;
+    background-color: #77dd70;
+    background-image: linear-gradient(to right, #57c74f 10%, #30a328 31%, #278620, #11470d 100%);
+    background-size: 100%;
+    margin-bottom: 3rem;
+    font-size: 5rem;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
+.AU p{
+    margin-top: .25rem;
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: #383737;
+}
+#AU_img{
+    height:85%;
+    width: 85%;
+}
+@media screen and (max-width: 960px){
+    .AU_container{
+        display: grid;
+        grid-template-columns: auto;
+        align-items: center;
+        justify-self: center;
+        width: 100%;
+        margin: 0 auto;
+        height: fit-content;
+    }
+    .AU_content{
+        margin-bottom: .5rem;
+    }
+    .AU h1{
+        font-size: 2.5rem;
+        margin-top: .75rem;
+    }
+    .AU p{
+        font-size: 1.2rem;
+    } 
+}
+@media screen and (max-width: 500px){
+    .AU_content h1{
+        font-size: 1.75rem;
+        margin-top: .75rem;
+    }
+    .AU_content p{
+        margin-top: .5rem;
+        font-size: 1rem;
+    }
+}
+/* GoToTop Button */
+#myBtn {
+    display: none; 
+    position: fixed; 
+    bottom: 20px; 
+    right: 30px; 
+    z-index: 99; 
+    border: none; 
+    outline: none; 
+    background-color: #383737; 
+    color: white; 
+    cursor: pointer; 
+    padding: 15px; 
+    border-radius: 10px; 
+    font-size: 18px; 
+}
+#myBtn:hover {
+  background-color: #ff9a17; /* Add a dark-grey background on hover */
+}
+@media screen and (max-width: 960px){
+    #myBtn{
+        padding: 12px;
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 500px){
+    #myBtn{
+        padding: 10px;
+        font-size: 12px;
+    }
+}
+/* login and signup */
+.signupLoginForms{
+    margin-top: 10px;
+    display: flex;
+    background-color: #f6f6e9ff;
+}
+.signupForm{
+    height: fit-content;
+    width: 400px;
+    font-size: 18px;
+    padding: 10px;
+    margin: 10 auto;
+}
+.signupForm h1{
+    text-align: center;
+    margin-bottom: 10px;
+}
+input[type=submit]{
+    background-color: #04AA6D;
+    width: 25%;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 15px;
+}
+input[type=submit]:hover{
+    background-color: #ff9a17;
+    transition: all 0.3s ease;
+}
+input[id=email], input[type=password]{
+    width: 100%;
+    padding: 5px 5px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #383737;
+    font-size: 15px ;
+    border-radius: 4px;
+}
+.loginForm{
+    height: fit-content;
+    width: 400px;
+    font-size: 18px;
+    padding: 10px;
+    margin: 10 auto;
+}
+.loginForm h1{
+    text-align: center;
+    margin-bottom: 10px;
+}
+@media screen and (max-width: 960px){
+    .signupForm{
+        font-size: 15px;
+    }
+    .loginForm{
+        font-size: 15px;
+    }
+    input[id=username], input[type=password], input[type=tel]{
+        font-size: 12px;
+    }
+    input[type=submit]{
+        width: 25%;
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 500px){
+    .signupLoginForms{
+        display: grid;
+        grid-template-columns: auto;
+        align-items: center;
+        justify-self: center;
+        width: 100%;
+        margin: 0 auto;
+        height: fit-content;
+    }
+    .signupForm{
+        font-size: 12px;
+    }
+    .loginForm{
+        font-size: 12px;
+    }
+    input[id=username], input[type=password], input[type=tel]{
+        font-size: 10px;
+    }
+    input[type=submit]{
+        width: 20%;
+        font-size: 10px;
+    }
+}
+
+/* tf was this ".container" for? I cant find it anywhere else */
+.container {
+	width:100%;
+    background-color:#11b706;
+    padding-top:20px;
+    padding-left:15px;
+    padding-right:15px;
+	margin-left:auto;
+	margin-right:auto;
+}
+/* seller page */
+#welcomeback {
+    text-align: center;
+	color:#11b706;
+}
+html {
+    font-family: sans-serif;
+    background: #ffc600;
+}
+.inbox {
+    max-width: 400px;
+    margin-bottom: 30px;
+    margin-top: 15px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
+}
+.item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #F1F1F1;
+}
+.item:last-child {
+    border-bottom: 0;
+}
+input:checked + label {
+    background: #F9F9F9;
+    font-weight: bold;
+}
+input[type="checkbox"] {
+    margin: 20px;
+}
+.foodtype {
+    margin: 0;
+    padding: 20px;
+    transition: background 0.2s;
+    flex: 1;
+    font-family:'helvetica neue';
+    font-size: 20px;
+    font-weight: 200;
+    border-left: 1px solid #D1E2FF;
+}
+input[id=submitseller]{
+    background-color: #04AA6D;
+    width: 50%;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-decoration: none;
+    margin: auto;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 20px;
+	text-align: center;
+}
+input[id=nameofOasis]{
+    width: 25%;
+    padding: 5px 5px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #383737;
+    font-size: 15px ;
+    border-radius: 4px;
+}
+.geocoder {
+    position: absolute;
+    z-index: 1;
+    width: 50%;
+    left: 50%;
+    margin-left: -25%;
+    top: 80px;
+    margin-top: 20px;
+}
+.mapboxgl-ctrl-geocoder {
+    min-width: 100%;
+}
+#map {
+    position: absolute; 
+    margin-top: 150px;
+}
+.mapContainer{
+    height: 650px;
+}
+.marker {
+    background-image: url('images/pin.png');
+    background-size: cover;
+    width: 16px;
+    height: 26px;
+    cursor: pointer;
+}
+.mapboxgl-popup {
+    max-width: 200px;
+}
+.mapboxgl-popup-content {
+    text-align: center;
+}
+a.gpsBtn{
+    display:inline-block;
+    padding:0.3em 1.2em;
+    margin:0 0.3em 0.3em 0;
+    margin-top: 5px;
+    border-radius:2em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-weight:300;
+    color:#FFFFFF;
+    background-color:#04AA6D;
+    text-align:center;
+    transition: all 0.2s;
+}
+a.gpsBtn:hover{
+    background-color: #ff9a17;
+}
+@media all and (max-width:30em){
+    a.gpsBtn{
+        display:block;
+        margin:0.4em auto;
+    }
+}
+a.btnyes{
+    display:inline-block;
+    padding: 14px 32px;
+    margin-top: 2rem;
+    margin-bottom: 10px;
+    border-radius:2em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-weight:300;
+    color:#FFFFFF;
+    background-image: linear-gradient(to top, #fab55a, #ff9a17);
+    text-align:center;
+    transition: all 1s ease;
+}
+a.btnyes:hover{
+    background-image: linear-gradient(to top, rgb(86, 84, 84) ,black);
+}
+@media all and (max-width:30em){
+    a.btnyes{
+        display:block;
+    }
+}

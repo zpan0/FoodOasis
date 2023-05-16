@@ -1,0 +1,185 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Seller Page</title>
+		<link rel="stylesheet" href="style.css">
+
+		<!-- Mapbox stuff -->
+		<link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+		<script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
+		<style>
+		body { margin: 0; padding: 0; height: 950px;}
+		#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+		#nameofOasisLabel{ font-size: 20px; font-weight: bold;}
+		</style>
+	</head>
+
+	<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar_container">
+            <a href="index.html" id="navbar_logo">
+                <img src="images/LogoByLUCY.png">
+                <img src="images/LabelByLUCY.png">
+
+            </a>
+            <div class="navbar_toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar_menu">
+                <li class="navbar_item">
+                    <a href="index.html" class="navbar_links">Home</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="findOasis.html" class="navbar_links">Find Oasis</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="newOasis.html" class="navbar_links">New Oasis</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="aboutUs.html" class="navbar_links">About Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+	<div class="main_content">
+		<h1 id="welcomeback" >New Oasis</h1>
+	</div>
+		 <!--they will have a list of products like a yard sale and first come first serve-->
+	<center>
+	<form id="items" >
+        <div class="nameofOasis">
+            <label for="nameofOasis" id="nameofOasisLabel">Name of Oasis: </label>
+            <input type="text" id="nameofOasis" name="nameofOasis" required>
+        </div>
+        <h2>Product Listings</h2>
+        <div class="inbox">
+            <div class="item">
+                <input type="checkbox" id="dairy" name="diary">
+                <label for = "dairy" class="foodtype">Dairy</label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="vegetables" name="vegetables">
+                <label for = "vegetables" class="foodtype">Vegetables</label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="fruits" name="fruits">
+                <label for = "fruits" class="foodtype">Fruits</label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="drinks" name="drinks">
+                <label for = "drinks" class="foodtype">Drinks</label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="meats" name="meats">
+                <label for = "meats" class="foodtype">Meats</label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="nonperi" name="nonperi">
+                <label for = "nonperi" class="foodtype">Non-Perishables</label>
+            </div>
+        </div>
+
+        <!--Mapbox stuff for location input-->
+        <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+        <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+        <h2 id="enterAddress">Location of Oasis</h2>
+        <input type="hidden" id="location" name="location" >
+        <style>
+            #geocoder {
+            z-index: 1;
+            margin: 20px;
+            }
+            .mapboxgl-ctrl-geocoder {
+            min-width: 50%;
+            }
+        </style>
+        <div id="geocoder"></div>
+        <pre id="result"></pre>
+        <input type="submit" value="Submit" id="submitseller">
+	</form>
+
+    <!--Mapbox stuff-->
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoienBhbjMiLCJhIjoiY2xha2Yzd3RvMGxvZzN5bGYydGpsZGNjOSJ9.JbRKjmgYO_jvMrQLVzEMSQ';
+            const geocoder = new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            types: 'poi, address'
+        });
+        geocoder.addTo('#geocoder');
+            /* testing geocoder coordinates
+                // Get the geocoder results container.
+                const results = document.getElementById('result');
+                // Add geocoder result to container.
+                geocoder.on('result', (e) => {
+                    results.innerText = "Coordinates: " + JSON.stringify(e.result.geometry.coordinates);
+                });
+                // Clear results container when search is cleared.
+                geocoder.on('clear', () => {
+                results.innerText = '';
+                });
+            */
+       // save geocoder coordinates to location input value
+        geocoder.on('result', function(e) {
+            const coords = e.result.center;
+            document.getElementById("location").value = coords;
+        });
+    </script>
+
+    <!-- GoToTop Button -->
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <script src="app.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+        import { getAuth} from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
+        import { getDatabase, ref, set, push, child} from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyBLWpnn-vU3bXKUP-0aRd0x8poLxtZE0DU",
+        authDomain: "seller-login-d3c61.firebaseapp.com",
+        databaseURL: "https://seller-login-d3c61-default-rtdb.firebaseio.com",
+        projectId: "seller-login-d3c61",
+        storageBucket: "seller-login-d3c61.appspot.com",
+        messagingSenderId: "1069521492315",
+        appId: "1:1069521492315:web:495ee5160c4a27223ea27e"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+    const database = getDatabase(app);
+
+    submitseller.addEventListener('click',(e) => {
+        var nameofOasis = document.getElementById('nameofOasis');
+        var dairy = document.getElementById('dairy');
+        var vegetables = document.getElementById('vegetables');
+        var fruits = document.getElementById('fruits');
+        var drinks = document.getElementById('drinks');
+        var meats = document.getElementById('meats');
+        var nonperi = document.getElementById('nonperi');
+        var location = document.getElementById('location');
+
+
+        const userId = push(child(ref(database), 'itemsavailable')).key; 
+        set(ref(database, 'itemsavailable/' + userId ), {
+            nameofOasis: nameofOasis,
+            dairy: dairy,
+            vegetables: vegetables,
+            fruits: fruits,
+            drinks: drinks,
+            meats: meats,
+            nonperi: nonperi,
+            location: location
+        });
+
+    alert('Items saved into Oasis!')
+
+    }); 
+    </script>
+    
+	</body>
+</html>
